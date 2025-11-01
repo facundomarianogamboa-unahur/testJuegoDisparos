@@ -1,0 +1,52 @@
+import wollok.game.*
+import jugador.*
+
+import example.pepita
+
+program PepitaGame {
+	game.height(15)//   Altura del tablero en celdas 640px
+ 	game.width(15) //   Ancho del tablero en celdas	 960px
+ 	game.cellSize(64)// Tamaño de celdas
+ 	game.title("Prueba disparitos")
+	game.boardGround("Sprite-0001-x4.png")
+	game.addVisual(personaje)
+	personaje.cargarControles()
+	//game.addVisual(new EnemigoOrco(vida=1))
+	game.start()
+}
+
+class Spawner{
+	var property position
+	method initialize(){
+		self.spawnearEnemigo()
+	}
+	method spawnearEnemigo(){
+	//	game.onTick(6000, "name", action)
+	}
+}
+
+
+class Enemigo{
+	var vida
+	var property position// = game.at(3.randomUpTo(8),6.randomUpTo(8))
+	method initialize(){
+		self.comportamiento()
+	}
+	method comportamiento()
+	method recibirDaño(){
+		vida = vida-1
+	}
+	method morir(){
+		//if (vida == 0){}
+		// reproducir animacion de muerte
+		// dar algun objeto
+	}
+}
+
+class EnemigoOrco inherits Enemigo{
+	method image() = "paredverde.png"
+	override method comportamiento(){
+		self.moverseAlPJ()
+	}
+	method moverseAlPJ(){}
+}
